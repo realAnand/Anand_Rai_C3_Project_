@@ -2,11 +2,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class RestaurantTest {
     Restaurant restaurant;
+
+    List<Item> userMenu = new ArrayList<Item>();
+
+
 
     private void restaurantCreation() {
 
@@ -69,4 +75,27 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //<<<<<<<<<<<<<<<<<<<<<<<ORDER VALUE>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void total_value_of_selected_items(){
+        restaurantCreation();
+        userMenu = restaurant.getMenu();
+        assertEquals(222,restaurant.getOrderValue(userMenu));
+    }
+
+
+    @Test
+    public void total_value_when_we_remove_items(){
+        restaurantCreation();
+        userMenu = restaurant.getMenu();
+        int total = restaurant.getOrderValue(userMenu);
+        int afterTotal = userMenu.get(1).getPrice();
+        userMenu.remove(1);
+        assertEquals(total-afterTotal,restaurant.getOrderValue(userMenu));
+    }
+
+    //<<<<<<<<<<<<<<<<<<<<<<<ORDER VALUE>>>>>>>>>>>>>>>>>>>>>>
+
 }
