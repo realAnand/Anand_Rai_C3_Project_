@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
@@ -11,8 +10,6 @@ class RestaurantTest {
     Restaurant restaurant;
 
     List<Item> userMenu = new ArrayList<Item>();
-
-
 
     private void restaurantCreation() {
 
@@ -34,8 +31,6 @@ class RestaurantTest {
         restaurant.setClosingTime(LocalTime.now().plusMinutes(10));
         assertTrue(restaurant.isRestaurantOpen());
     }
-
-
 
     @Test
     public void is_restaurant_open_should_return_false_if_time_is_outside_opening_and_closing_time(){
@@ -82,7 +77,7 @@ class RestaurantTest {
     public void total_value_of_selected_items(){
         restaurantCreation();
         userMenu = restaurant.getMenu();
-        assertEquals(222,restaurant.getOrderValue(userMenu));
+        assertEquals(388,restaurant.getOrderValue(userMenu));
     }
 
 

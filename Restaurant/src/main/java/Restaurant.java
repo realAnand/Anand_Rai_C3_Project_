@@ -70,4 +70,12 @@ public class Restaurant {
     public void setClosingTime(LocalTime plusMinutes) {
         this.closingTime = plusMinutes;
     }
+
+    public int getOrderValue(List<Item> userMenu) {
+        int total = 0;
+        for (Item myItem : userMenu) {
+            total = total + myItem.getPrice();
+        }
+        return total;
+    }
 }
